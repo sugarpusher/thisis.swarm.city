@@ -2,37 +2,29 @@
 
 $(document).ready(function(){  
 
-  // ====================================
-  // SCROLLSPY
-  // ====================================
-  
-  // $("body").scrollspy({target: ".navbar", offset:50});
 
-  // ====================================
-  // SMOOTH SCROLL MENU
-  // ====================================
+  // ==========================================
+  // SMOOTH SCROLL MENU & SCROLLSPY OFFSET FIX
+  // ==========================================
 
-  // $(document).on('click', 'a[href^="#"]', function (event) {
-  //   event.preventDefault();
+  $(document).on('click', 'a[href^="#"]', function (event) {
+    var headerheight = $("#header").outerHeight();
+    $("body").attr("data-offset", headerheight);
 
-  //   $('html, body').animate({
-  //       scrollTop: $($.attr(this, 'href')).offset().top
-  //   }, 1000);
-  // });
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+      && location.hostname == this.hostname) {
+      var $target = $(this.hash);
+      $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
+      if ($target.length) {
+        // var targetOffset = $target.offset().top - 128;
+        var targetOffset = $target.offset().top - headerheight;
+        $('html,body').animate({ scrollTop: targetOffset }, 1000);
+        return false;
+      }
+    }
+  });
 
-    $(document).on('click', 'a[href^="#"]', function (event) {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
-        && location.hostname == this.hostname) {
-            var $target = $(this.hash);
-            $target = $target.length && $target || $('[name=' + this.hash.slice(1) +']');
-            if ($target.length) {
-              // var targetOffset = $target.offset().top - 128;
-              var targetOffset = $target.offset().top - $("#header").outerHeight(true);
-                $('html,body').animate({scrollTop: targetOffset}, 1000);
-                return false;
-            }
-        }
-    });
+
 
   // ====================================
   // CHANGE LINK TEXT WHEN CLICKED (SHOW MORE/SHOW LESS)
@@ -47,6 +39,7 @@ $(document).ready(function(){
       })
     }
    });
+
 
   // ====================================
   // "WHO" SECTION SLACK REQUEST FORM
@@ -103,6 +96,7 @@ $(document).ready(function(){
     });
   });
 
+
   // ====================================
   // "WHO" SECTION SLIDER INITIALIZER
   // ====================================
@@ -119,7 +113,7 @@ $(document).ready(function(){
     ,
     responsive: [
     {
-      breakpoint: 420,
+      breakpoint: 490,
       settings: {
         slidesToShow: 3
       }
@@ -128,25 +122,41 @@ $(document).ready(function(){
     {
       breakpoint: 550,
       settings: {
+        slidesToShow: 3
+      }
+    }
+    ,
+    {
+      breakpoint: 767,
+      settings: {
         slidesToShow: 4
       }
     }
     ,
     {
-      breakpoint: 768,
+      breakpoint: 991,
       settings: {
-        slidesToShow: 5
-      }
-    }
-    ,
-    {
-      breakpoint: 992,
-      settings: {
-        slidesToShow: 7
+        slidesToShow: 6
       }
     }
   ]
   });
+
+
+    // =======================================
+    // "WHEN" SECTION SLIDER *NAV* INITIALIZER
+    // =======================================
+
+    $('.slider-when-nav').slick({
+      slidesToShow: 5,
+      // slidesToScroll: 1,
+      asNavFor: '.slider-when',
+      dots: false,
+      centerMode: false,
+      arrows: false,
+      focusOnSelect: true
+    });
+
 
   // ====================================
   // "WHEN" SECTION SLIDER INITIALIZER
@@ -158,7 +168,7 @@ $(document).ready(function(){
     slidesToShow: 1,
     centerMode: false,
     autoplaySpeed: 5000,
-    // asNavFor: ".slider-bottom",
+    asNavFor: ".slider-when-nav",
     prevArrow: "<i class='fa fa-angle-left slick-prev' aria-hidden='true'></i>",
     nextArrow: "<i class='fa fa-angle-right slick-next' aria-hidden='true'></i>"
   });

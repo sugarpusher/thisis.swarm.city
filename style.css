@@ -39,6 +39,10 @@ body {
   /*padding-top: 130px;*/
 }
 
+#header {
+  height: 128px;
+}
+
 #body-wrap {
   background-color: #fafafa;  
 }
@@ -171,7 +175,7 @@ section .question {
 }
 
 #section-what {
-  padding: 130px 0 180px;
+  padding: 0 0 180px;
 }
 
 #section-what .section-spacer {
@@ -293,6 +297,7 @@ section h5.question {
   color: #acacac;
   font-family: "Montserrat-Regular";
   font-size: 12px;
+  padding-top: 20px;
 }
 
 section h2.answer {
@@ -673,6 +678,9 @@ footer .footer-bottom div:first-child {
 @media (min-width: 992px) {
 	body {
     padding-top: 50px;
+  }
+  #header {
+    height: 154px;
   }
   #section-what {
     padding-bottom: 50px;

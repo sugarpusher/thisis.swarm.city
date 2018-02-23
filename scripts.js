@@ -2,19 +2,37 @@
 
 $(document).ready(function(){  
 
-  // $("body").scrollspy({target: ".navbar", offset:220});
+  // ====================================
+  // SCROLLSPY
+  // ====================================
+  
+  // $("body").scrollspy({target: ".navbar", offset:50});
 
   // ====================================
   // SMOOTH SCROLL MENU
   // ====================================
 
-  $(document).on('click', 'a[href^="#"]', function (event) {
-    event.preventDefault();
+  // $(document).on('click', 'a[href^="#"]', function (event) {
+  //   event.preventDefault();
 
-    $('html, body').animate({
-        scrollTop: $($.attr(this, 'href')).offset().top
-    }, 1000);
-  });
+  //   $('html, body').animate({
+  //       scrollTop: $($.attr(this, 'href')).offset().top
+  //   }, 1000);
+  // });
+
+    $(document).on('click', 'a[href^="#"]', function (event) {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+        && location.hostname == this.hostname) {
+            var $target = $(this.hash);
+            $target = $target.length && $target || $('[name=' + this.hash.slice(1) +']');
+            if ($target.length) {
+              // var targetOffset = $target.offset().top - 128;
+              var targetOffset = $target.offset().top - $("#header").outerHeight(true);
+                $('html,body').animate({scrollTop: targetOffset}, 1000);
+                return false;
+            }
+        }
+    });
 
   // ====================================
   // CHANGE LINK TEXT WHEN CLICKED (SHOW MORE/SHOW LESS)
@@ -144,8 +162,5 @@ $(document).ready(function(){
     prevArrow: "<i class='fa fa-angle-left slick-prev' aria-hidden='true'></i>",
     nextArrow: "<i class='fa fa-angle-right slick-next' aria-hidden='true'></i>"
   });
-
-  
-
 });
 

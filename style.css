@@ -685,8 +685,8 @@ footer .footer-bottom div:first-child {
     background-position-x: calc(100% + 10px);
   }
   .slider-when-nav .card-title.cth {
-    background-image: url("images/img_when_arrow_last.png");
-    background-position-x: calc(100% - 50px);
+    background-image: none;
+    
   }
   .slider-when-nav .slick-current .card-title  {
     font-size: 16px;

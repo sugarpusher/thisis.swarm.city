@@ -7,7 +7,7 @@ $(document).ready(function(){
   // SMOOTH SCROLL MENU & SCROLLSPY OFFSET FIX
   // ==========================================
 
-  $(document).on('click', 'a[href^="#"]', function (event) {
+  $(document).on('click', 'a[class=nav-link]', function (event) {
     var headerheight = $("#header").outerHeight();
     $("body").attr("data-offset", headerheight);
 

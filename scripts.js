@@ -19,6 +19,12 @@ $(document).ready(function(){
         // var targetOffset = $target.offset().top - 128;
         var targetOffset = $target.offset().top - headerheight;
         $('html,body').animate({ scrollTop: targetOffset }, 1000);
+        // $("#navbarSupportedContent").removeClass("show");
+        var clickover = $(event.target);
+        var _opened = $(".navbar-collapse").hasClass("show");
+        if (_opened === true && !clickover.hasClass("navbar-toggler")) {
+          $(".navbar-toggler").click();
+        }
         return false;
       }
     }

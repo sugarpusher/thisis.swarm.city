@@ -136,6 +136,13 @@ section {
   padding: 80px 0;
 }
 
+section .card-body a {
+  color: #0FAFFF;
+  text-decoration: none;
+  font-family: "Montserrat-SemiBold"; 
+  border-bottom: 2px dotted #0FAFFF;
+}
+
 section .question {
   margin-bottom: 15px;
 }
@@ -471,6 +478,7 @@ form#slackForm button.btn-blue {
 #section-who .documentary a {
   color: #333333;
   font-size: 16px;
+  border-bottom: 2px dotted #000000;
 }
 
 #section-when a.more {

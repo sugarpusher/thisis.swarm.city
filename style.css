@@ -96,8 +96,8 @@ body {
   padding: 10px 15px;
 }
 
-.navbar-light .navbar-nav li a:hover {
-  background-color: #f0f0f0;
+.navbar-light .navbar-nav li a:hover .navlink {
+  border-bottom: 2px dotted #666666;
 }
 
 .navbar-light .navbar-nav .nav-link {
